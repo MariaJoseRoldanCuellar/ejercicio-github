@@ -3,13 +3,24 @@ on:
   pull_request:
     types: [opened]
 permissions:
+welcome-workflow
+
+  pull-requests: write 
+name: Post welcome comment
+on:
+  pull_request:
+    types: [opened]
+permissions:
+ main
   pull-requests: write
 jobs:
   welcome:
     name: Post welcome comment
     runs-on: ubuntu-latest
+welcome-workflow
     steps:
       - run: gh pr comment "$PR_URL" --body "Welcome to the repository!"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_URL: ${{ github.event.pull_request.html_url }}
+ main
